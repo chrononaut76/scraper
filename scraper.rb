@@ -13,11 +13,12 @@ require 'nokogiri'
 
 # html = driver.page_source
 
-html = File.open('santamaria.html')
+html = File.read('santamaria.html')
 
 page = Nokogiri::HTML(html)
 
-p page.css('p.nombre').text
-p page.css('p.precio').text
+page.css('p.nombre a').each {|element| puts element}
+
+page.css('p.precio span').each {|element| puts element}
 
 # driver.quit
